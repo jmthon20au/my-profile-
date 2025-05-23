@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تواصل معي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to right, #dbefff, #f0f5ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      direction: rtl;
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 16px;
+      color: #1e3c72;
+      text-decoration: none;
+      background-color: #e0eaff;
+      padding: 8px 14px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+
+    .back-button i {
+      margin-left: 6px;
+    }
+
+    .back-button:hover {
+      background-color: #c6dbff;
+    }
+
+    .contact-box {
+      background-color: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      padding: 35px 30px;
+      width: 100%;
+      max-width: 500px;
+      animation: fadeIn 1s ease;
+      transition: all 0.3s ease;
+    }
+
+    .contact-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #1e3c72;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 13px 45px 13px 15px;
+      border: 1px solid #ccc;
+      border-radius: 14px;
+      font-size: 16px;
+      background: #f9f9f9;
+      transition: all 0.3s ease;
+    }
+
+    .contact-box input:focus,
+    .contact-box textarea:focus {
+      border-color: #4e82d9;
+      background: #fff;
+      box-shadow: 0 0 7px rgba(78, 130, 217, 0.3);
+      outline: none;
+    }
+
+    .contact-box textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-box button {
+      width: 100%;
+      background: linear-gradient(to right, #2a5298, #1e3c72);
+      color: white;
+      padding: 14px;
+      font-size: 17px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.4s ease;
+    }
+
+    .contact-box button:hover {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+    }
+
+    .success-message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      display: none;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .contact-box {
+        padding: 25px 20px;
+      }
+
+      .contact-box h2 {
+        font-size: 24px;
+      }
+
+      .contact-box input,
+      .contact-box textarea {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="pictures.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> الرجوع
+  </a>
+
+  <div class="contact-box">
+   <h2><i class="fa fa-envelope-open-text fa-bounce"></i> تواصل معي</h2>
+
+    <form onsubmit="sendMessage(event)">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" id="name" placeholder="الاسم" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa fa-at"></i>
+        <input type="text" id="contact" placeholder="اليوزر أو البريد الإلكتروني" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa fa-comment"></i>
+        <textarea id="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+      </div>
+
+      <button type="submit"><i class="fa fa-paper-plane"></i> إرسال</button>
+      <p class="success-message" id="successMsg">تم إرسال الرسالة بنجاح!</p>
+    </form>
+  </div>
+
+  <script>
+let TOKEN = "";
+let CHAT_ID = "";
+
+// تحميل البيانات من send.json
+fetch("send.json")
+  .then(response => response.json())
+  .then(data => {
+    TOKEN = data.TOKEN;
+    CHAT_ID = data.CHAT_ID;
+  })
+  .catch(() => {
+    alert("فشل تحميل إعدادات التوكن.");
+  });
+
+function sendMessage(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const contact = document.getElementById("contact").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  const fullMessage = `📩 رسالة جديدة:\n\n👤 الاسم: ${name}\n📧 اليوزر/الإيميل: ${contact}\n📝 التعليق:\n${message}`;
+
+  // التأكد أن التوكن جاهز قبل الإرسال
+  if (!TOKEN || !CHAT_ID) {
+    alert("لم يتم تحميل التوكن أو الآيدي بعد.");
+    return;
+  }
+
+  fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: CHAT_ID, text: fullMessage })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok) {
+        document.getElementById("successMsg").style.display = "block";
+        document.getElementById("name").value = "";
+        document.getElementById("contact").value = "";
+        document.getElementById("message").value = "";
+      } else {
+        alert("حدث خطأ أثناء الإرسال.");
+      }
+    })
+    .catch(() => alert("فشل الاتصال بالخادم."));
+}
+  </script>
+
+</body>
+</html>
