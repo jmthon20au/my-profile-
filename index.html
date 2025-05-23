@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags for link preview -->
+    <meta name="description" content="موقع علي الطائي الشخصي">
+    <meta property="og:title" content="Ali Altaee">
+    <meta property="og:description" content="Ali Altaee ">
+    <meta property="og:image" content="a.jpg">
+    <meta property="og:url" content="www.ali-altaee.free.nf">
+    <meta property="og:type" content="website">
+  <title>Ali Altaee | علي الطائي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #1F1F2E;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 3rem;
+      color: #ffffff;
+      position: relative;
+      animation: fadeInUp 1.5s ease-out;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .bio {
+      background: linear-gradient(135deg, #1e1e2f, #2e2e3e);
+      padding: 15px 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 1.2s ease-out;
+      border: 1px solid #00f0ff40;
+    }
+
+    .bio i {
+      color: #00f0ff;
+      font-size: 1.5rem;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .bio:hover {
+      background: linear-gradient(135deg, #222244, #334455);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    .bio:hover i {
+      color: #66fcf1;
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .datetime {
+      margin-bottom: 20px;
+      font-size: 1em;
+      color: #aaa;
+    }
+    .social-icons a {
+      color: #E86D92;
+      font-size: 1.8em;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #00BFFF;
+    }
+    .btns {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* كل سطر يحتوي 2 أزرار */
+  gap: 1px;
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 10px;
+}
+    .btns button {
+      background: #00BFFF;
+      color: white;
+      border: none;
+      margin: 10px;
+      padding: 2px 25px;
+      font-size: 1.1em;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btns button:hover {
+      background: #ff555f;
+    }
+    .section {
+      display: none;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px;
+      border-radius: 12px;
+    }
+    .work-card, .channel-card {
+      background: #2a2a3d;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+    }
+    .work-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .work-card h3, .channel-card h3 {
+      color: #00BFFF;
+      margin-bottom: 5px;
+    }
+    .work-card p, .channel-card p {
+      color: #ccc;
+      font-size: 0.95em;
+      margin-bottom: 10px;
+    }
+    .work-card a, .channel-card a {
+      color: #E86D92;
+      text-decoration: none;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #999;
+    }
+    .frame {
+      width: 220px;
+      height: 220px;
+      padding: 5px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+      background-size: 400% 400%;
+      animation: borderAnim 6s linear infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    .image-container {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: white;
+      position: relative;
+      z-index: 2;
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+     .wrapper:hover img {
+      transform: scale(1.05);
+    }
+    .text-inside {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+      text-align: center;
+      font-size: 18px;
+      padding: 10px;
+    }
+    .wrapper:hover .text-inside {
+      opacity: 1;
+    }    
+    @keyframes borderAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .wrapper {
+      display: inline-block;
+      border-radius: 50%;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+     }
+    .wrapper:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    }
+.skills .progress {
+      background: #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .skills .progress div {
+      height: 20px;
+      background: #2196f3;
+      text-align: right;
+      padding-right: 5px;
+      color: white;
+    }
+    .testimonial {
+      background: #1e1e1e;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+    }
+    .light-mode {
+      background-color: #f1f1f1;
+      color: #111;
+    }    
+
+  </style>
+</head>
+<body>    
+  <h1>Ali Altaee</h1>
+
+  <div class="wrapper">
+    <div class="frame">
+      <div class="image-container">
+        <img src="a.jpg" alt="صورة دائرية" />
+        <div class="text-inside">أهلاً بك في موقعي</div>
+      </div>
+    </div>
+  </div>
+    <div class="bio"><i class="fas fa-code"></i>مهتم بتصميم مواقع الويب والبرمجة</div>
+    
+  <div class="datetime" id="datetime"></div>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/g_30_j/profilecard/?igsh=MTBleDE5dWE1cnVrdA==" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/share/1Ho6Ljb4Lt/" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://t.me/altaee_z" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <a href="www.google.com" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  </div>
+   <div class="btns">
+    <button onclick="toggleSection('channels')">
+      <i data-lucide="tv"></i> قنواتي و حساباتي
+    </button>
+    <button onclick="toggleSection('photos')">
+      <i data-lucide="image"></i> عرض الصور الشخصية
+    </button>
+    <button onclick="toggleSection('works')">
+      <i data-lucide="briefcase"></i> عرض الأعمال
+    </button>
+    <button onclick="toggleSection('skills')">
+      <i data-lucide="zap"></i> مهاراتي
+    </button>
+    <button onclick="toggleSection('testimonials')">
+      <i data-lucide="message-circle"></i> التوصيات و الاراء
+    </button>
+    
+    <button onclick="toggleMode()">
+      <i data-lucide="moon-star"></i> تغيير الوضع
+    </button>
+  
+      <a href="h9.html" class="btn-contact">
+  <button>
+    <i class="fas fa-paper-plane"></i> محادثة فورية
+  </button>
+</a>
+</div>
+  <div class="section" id="channels">
+    <div class="channel-card">
+      <h3>قناة اليوتيوب</h3>
+      <p>قناة تقدم شروحات برمجية وأفكار مشاريع.</p>
+      <a href="http://youtube.com/@ali_altaee" target="_blank">عرضها في اليوتيوب</a>
+    </div>
+    <div class="channel-card">
+      <h3>قناة التليجرام</h3>
+      <p>مشاركة أدوات وكودات مفيدة للمطورين.</p>
+      <a href="https://t.me/my00002" target="_blank">الانضمام للقناة</a>
+      </div>
+      <div class="channel-card">
+      <h3>قناة تلجرام آمن</h3>
+      <p>هي منصة رقمية متخصصة في تقديم محتوى تعليمي وتوعوي حول أحدث التطورات في مجال الأمن السيبراني. تستهدف القناة جميع مستخدمي الإنترنت، توفر لهم أدوات ومعلومات تساعدهم على حماية أنفسهم وأعمالهم من المخاطر الإلكترونية.</p>
+      <a href="https://t.me/ali_nemp">مشاهدة القناة</a>
+    </div>
+    <div class="channel-card">
+      <h3>قناة يوميات</h3>
+      <p>انشر بيها شغلاتي الحلوات 🤓</p>
+        <a href="https://t.me/XX28Z">مشاهدة القناة</a>
+  </div>
+  <div class="channel-card">
+      <h3>قناة تصاميم</h3>
+      <p>قناة تعرض تصاميمي طب اختار براحتك ⭐</p>
+      <a href="https://t.me/+9SEvZ3I4f8Q4NDFi">مشاهدة القناة</a>
+  </div>
+</div>
+<div id="skills" class="section skills">
+  <h2>مهاراتي / خدماتي</h2>
+  <div class="skill"><p><i class="fab fa-html5"></i> HTML / CSS</p>
+    <div class="progress"><div style="width: 70%">70%</div></div></div>
+  <div class="skill"><p><i class="fab fa-js"></i> JavaScript</p>
+    <div class="progress"><div style="width: 50%">50%</div></div></div>
+  <div class="skill"><p><i class="fas fa-paint-brush"></i> تصميم واجهات</p>
+    <div class="progress"><div style="width: 50%">50%</div></div></div>
+  <div class="skill"><p><i class="fas fa-cogs"></i> تطوير تطبيقات</p>
+    <div class="progress"><div style="width: 1%">1%</div></div></div>
+</div>
+  <div class="section gallery" id="photos">
+    <img src="a.jpg" alt="صورة شخصية" />
+    <img src="a.jpg" alt="صورة شخصية" />
+  </div>
+  <div class="section" id="works">
+    <div class="work-card">
+
+      <h3>موقع شخصي</h3>
+      <p>موقع تعريفي احترافي لعرض البيانات والسيرة الذاتية.</p>
+      <a href="www.ali-altaee.free.nf">زيارة</a>
+    </div>
+    <div class="work-card"> 
+      <h3>تطبيق أندرويد</h3>
+      <p>تطبيق لتنظيم المهام اليومية بطريقة سهلة.</p>
+      <a href="www.ali-altaee.free.nf">زيارة</a>
+    </div>
+  </div>
+  <div id="testimonials" class="section">
+  <h2>آراء الناس</h2>
+  <div class="testimonial">
+    <p>“علي إنسان مبدع وملتزم بالعمل.” - حسين</p>
+  </div>
+  <div class="testimonial">
+    <p>“استفدت هواية من شغله وتعامله المحترف.” - زينب</p>
+  </div>
+</div>
+  <footer>
+    &copy; <span id="year"></span> علي الطائي - جميع الحقوق محفوظة.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setInterval(() => {
+      const now = new Date();
+      document.getElementById('datetime').textContent = now.toLocaleString('ar-EG');
+    }, 1000);
+
+    function toggleSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+     
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+ 
+              }
+  </script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
