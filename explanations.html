@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروحات علي الطائي</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            background-color: gold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .button:hover {
+            background-color: black;
+            color: gold;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            background-color: #fff;
+            border: 1px solid #04aaf8;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: right;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            text-align: justify;
+            line-height: 1.8;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #02e1e8;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            margin: 0;
+            font-size: 25px;
+            color: #0799ca;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #ff0707;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: blue;
+        }
+        
+        .card-body p,
+        .card-body ul,
+        .card-body li {
+            margin-top: 0;
+            margin-bottom: 1em;
+        }
+        
+        .card-body a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .card-body a:hover {
+            text-decoration: underline;
+        }
+        
+        .note {
+            background-color: #e0f7fa;
+            border-right: 5px solid #00acc1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .step-heading {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: black;
+            color: gold;
+            border: 2px solid gold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-btn:hover {
+            background-color: gold;
+            border: 2px solid black;
+            color: rgb(0, 0, 0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>شروحات علي الطائي</h1>
+        <a href="index.html" class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-right"></i> العودة
+        </a>
+        <div class="button-group">
+            <button class="button" onclick="showExplanation('شرح إنشاء موقع ويب')">إنشاء موقع ويب</button>
+            <button class="button" onclick="showExplanation('شرح إرفاق الصور')">إرفاق الصور</button>
+            <button class="button" onclick="showExplanation('شرح ربط الدومين')">ربط الدومين</button>
+        </div>
+
+        <div id="explanationCard" class="card">
+            <div class="card-header">
+                <h2 id="cardTitle" class="card-title"></h2>
+                <button class="close-btn" onclick="hideExplanation()">&times;</button>
+            </div>
+            <div id="cardBody" class="card-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const explanations = {
+            'شرح إنشاء موقع ويب': `
+                <p>السلام عليكم 👋</p>
+                <p>حتى نكدر نسوي موقع ويب بطريقة بسيطة وما تطول عدنا بالزايد ساعة كاملة ✨</p>
+                <p>اذا كنت تستخدم الموبايل📱 فراح نحتاج:</p>
+                <ul>
+                    <li><strong>الذكاء الاصطناعي:</strong> GiminAi أو ChatGPT. ماكو فرق كبير، بس ChatGPT يحفظ ويخزن، أما Giminai ما يحفظ، وChatGPT محدود أما Giminai غير محدود.</li>
+                    <li><strong>برنامج محرر النصوص:</strong> بالنسبة إلي أفضل برنامج <a href="https://play.google.com/store/apps/details?id=com.teejay.trebedit" target="_blank">TrebEdit</a>. حلو من حيث الترتيب والأداء والمميزات.</li>
+                    <li><strong>حساب GitHub:</strong> تحتاج تفتح موقع GitHub وتسجل حساب بي.</li>
+                </ul>
+                <p>ذني تحتاجهن وكلهن مجانيات. أما نجي للخطوات:</p>
+                
+                <p class="step-heading">① خطوة جلب الكود ⛓</p>
+                <p>تروح للذكاء الاصطناعي وتطلب منه يسويلك موقع ويب، تكتب مثلاً:</p>
+                <p><em>*اصنع لي موقع ويب عبارة عن صفحة تعريفية تخصني تحتوي على حساباتي وصوري ومقالاتي .... اجعله يبدو احترافي بتنسيقات وأيقونات وخطوط مميزة وتأثيرات*</em></p>
+                <p>أني هيج مرات أطلب منه، راح يرسلك أكواد، مرات يدزهن كلهن بكود واحد ومرات يدز كل لغة بكود. بالمواقع البسيطة أعتمد فقط على HTML, JavaScript, CSS. لهنا تمام.</p>
+                
+                <p class="step-heading">② خطوة معاينة وإجراء التغييرات على الكود 🔧</p>
+                <p>بعد ما يدز الكود، نروح لبرنامج TrebEdit، ندوس علامة "➕" ونختار "Workspace". راح يفتحلنا صفحة، ندوس مرة ثانية علامة "➕" ونختار "New project". يطلب من عدنا اسم المشروع، نسميه مثلاً "موقعي التعريفي".</p>
+                <p>بعد ما نسوي المجلد أو المشروع، تفتح لنا صفحة جديدة، ندوس ➕ وندوس "new file". هنا نكتب "index.html" وندوسها، ونلصق الكود من الذكاء الاصطناعي. وأكو زر تشغيل بالزاوية أعلى يمين الصفحة، ندوسه يشتغل الموقع ونشوف شلون صار، حتى نرجع ونعدل براحتنا.</p>
+
+                <p class="step-heading">③ خطوة تصدير وحفظ المشروع 📥</p>
+                <p>بعد ما كملت تعديلات ومعاينة الموقع، هنا نروح للمشروع، نضغط عليه ونختار "Save"، نوب نختار "Save to device". نختار مجلد الحفظ ونحفظه.</p>
+
+                <p class="step-heading">④ خطوة فك الضغط 📦</p>
+                <p>تروح للملفات وين حفظت ملفات الموقع راح تلاكي اسم مشروعك وبصفه "ziq" تلقاه مضغوط، تفك الضغط وتخليه.</p>
+
+                <p class="step-heading">⑤ خطوة تسجيل في GitHub 👤</p>
+                <p>تروح لموقع <a href="https://github.com" target="_blank">GitHub</a> تسجل دخول، وإذا ما عندك حساب تسوي حساب.</p>
+                <div class="note">
+                    <strong>نصيحة:</strong> دوس 3 نقاط مال المتصفح وخلي إصدار سطح المكتب، أفضل الك.
+                </div>
+                <p>تختار "New Repository"، يطلب منك اسم المشروع (Name) بالإنكليزي وخلي الوصف (Description)، خلي شنو وصف موقعك «يفيدك بعدين»</p>
+                <p>ودوس "Create"، انتظر شوية تطلعلك صفحة جديدة.</p>
+                
+                <p class="step-heading">⑥ خطوة رفع الملفات إلى GitHub 📤</p>
+                <p>اختار "Uploading files"، نوب اختار "choose files". راح يوديك للملفات، روح لملفات موقعك اختارهن كلهن وانتظرهن يحملن للموقع.</p>
+                <p>⑦ من يتحملن للموقع، دوس "Save" أو "Commit changes"، وانتظر شوية وحدث الصفحة.</p>
+
+                <p class="step-heading">⑧ خطوة نشر الموقع 🌐</p>
+                <p>هسه تروح لزر "Settings" دوسه، نوب اختار "Pages". تلاكي زر اسم "None"، دوسه واختار "main". انتظر فد دقيقة إلى 5 دقايق وسوي تحديث للصفحة.</p>
+                <p>⑨ من تحدث الصفحة، راح يطلعلك رابط بالبداية بي يوزر حسابك بالموقع واسم المستودع مالتك.</p>
+                <p>⑩ ولهنا كمل موقعك، تكدر تنشر الرابط بكل سهولة وبالعافية عليك ✅</p>
+                
+                <div class="note">
+                    <strong>💡 فكرة:</strong> الفكرة سهلة كلش ومجانية ومو معقدة، بس تحتاج شوية ذكاء منك. لا تشوفها صعبة، بعدين طور من نفسك أكثر وأكثر.
+                </div>
+                <p><strong>للاستفسار والتواصل 👥</strong></p>
+                <ul>
+                    <li>تيليجرام: <a href="https://t.me/altaee_z" target="_blank">@altaee_z</a></li>
+                    <li>ويب: <a href="http://www.ali-altaee.free.nf" target="_blank">www.ali-altaee.free.nf</a></li>
+                </ul>
+            `,
+            'شرح إرفاق الصور': `
+                <p>الجزء الثاني من الشرح الأول حتى ترفق صورة أو أكثر عندك طريقتين 💫</p>
+                <p><strong>الطريقة الأولى:</strong> إرفاق صورة طبيعي من نفس التطبيق. تختارون "import file" وتختارون الصورة اللي تريدوها. وهالطريقة ما أنصح بيها. ❌</p>
+                <p><strong>الطريقة الثانية:</strong> إرفاق صورة عن طريق رابط، يعني ترفع الصورة لاستضافة مجانية دائمة وتخلي رابط الصورة بالكود تحديداً بسطر <code>src</code>.</p>
+                <p>عندي موقعين مال استضافة صور:</p>
+                <ul>
+                    <li>الموقع الأول: <a href="https://imgbb.com/upload" target="_blank">https://imgbb.com/upload</a></li>
+                    <li>الموقع الثاني: <a href="https://postimages.org/" target="_blank">https://postimages.org/</a></li>
+                </ul>
+                <p>وهالطريقة أنصح بيها ✅</p>
+                <p><strong>للاستفسار والتواصل 👥</strong></p>
+                <ul>
+                    <li>تيليجرام: <a href="https://t.me/altaee_z" target="_blank">@altaee_z</a></li>
+                    <li>ويب: <a href="http://www.ali-altaee.free.nf" target="_blank">www.ali-altaee.free.nf</a></li>
+                </ul>
+            `,
+            'شرح ربط الدومين': `
+                <p>الجزء الثالث من الشرح الأول حتى تربط موقعك بدومين مجاني 🛠</p>
+                <p>الدومين (Domain) هو اسم النطاق أو عنوان موقع الويب. ببساطة، هو الاسم اللي تكتبه في المتصفح حتى توصل لموقع معين، مثل: google.com أو facebook.com.</p>
+                
+                <p class="step-heading">الخطوات:</p>
+                <p><strong>🔘</strong> تدخل على موقع <a href="https://infinityfree.com/" target="_blank">infinity free</a> تسجل دخول بحسابك على GitHub.</p>
+                <div class="note">
+                    <strong>🔴 ملاحظة مهمة:</strong> فعل إصدار سطح المكتب أو موقع مصمم للكمبيوتر أفضل لك... وخلي الوضع إنكليزي لا تخلي عربي 🔴
+                </div>
+                <p>✔️ تسوي دومين جديد. تختار الخطة 0$ Free وتكمل الإجراءات الروتينية، بعدها راح ينشألك الخطة أو الدومين، تدخل عليه وتدوس "Add domain" تختار "subdomain" بعدها تسمي الدومين بحقل "Subdomain" التسمية، وبجانبها اختيار نهاية الدومين، اختاره مثل ما تريد. من تكمل دوس "create domain". مرات يطلع الدومين أو الاسم مستخدم، فغيره. من يطلع صح يحولك لواجهة الدومين المخصصة 🟢</p>
+                <p><strong>🔘</strong> كل اللي عليك هسه تروح على "dnsRecords" دوس "Add Records" اختار "Create CNAME Record". حقل "Name" تخلي بي www وحقل "Target" تخلي بي رابط حسابك على GitHub، يكون هيج: <code>username.github.io</code></p>
+                <p><strong>💡 هنا <code>username</code> اليوزر مال حسابك على GitHub.</strong></p>
+                <p>بعدها دوس "Create CNAME Record". هسه طلعتلك لستة مال دومينات، اختار آخر واحد تلكه يمه كلمة CNAME ورابط حسابك على GitHub. انسخه للدومين اللي عاليسار صاير. تروح لمستودعك على GitHub تختاره أي واحد تريده، تروح بعدها على "settings" على "page" نوب تنزل شوية جوه تلكه حقل مال domain. خلي الدومين اللي نسخته واضغط "save". راح تحدث الصفحة عندك ويتحقق من الرابط، إذا طلع أخضر معناها صار، وإذا غير الأخضر عندك خطأ بالخطوات وهو يگلك وين الخطأ أحياناً. ⚙</p>
+                
+                <p>🎊 وهيچ بالعافية عليك حصلت على دومين مجاني مدى الحياة. الخطوات سهلة ومبسطة 🎊</p>
+                
+                <p><strong>للاستفسار والتواصل 👥</strong></p>
+                <ul>
+                    <li>تيليجرام: <a href="https://t.me/altaee_z" target="_blank">@altaee_z</a></li>
+                    <li>ويب: <a href="http://www.ali-altaee.free.nf" target="_blank">www.ali-altaee.free.nf</a></li>
+                </ul>
+            `
+        };
+
+        function showExplanation(title) {
+            const card = document.getElementById('explanationCard');
+            const cardTitle = document.getElementById('cardTitle');
+            const cardBody = document.getElementById('cardBody');
+
+            cardTitle.textContent = title;
+            cardBody.innerHTML = explanations[title];
+            card.style.display = 'block';
+        }
+
+        function hideExplanation() {
+            const card = document.getElementById('explanationCard');
+            card.style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>
